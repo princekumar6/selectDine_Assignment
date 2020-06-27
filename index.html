@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    body {
+      margin: 0;
+      font-family: Sans-serif;
+      overflow: hidden;
+      background-color: lightskyblue;
+      height: 150vh;
+    }
+
+    .dashboard {
+      margin: 10px;
+      padding: 10px;
+      height: 150vh;
+      display: flex;
+      background-color: #ECF0F1;
+      border-radius: 20px;
+    }
+
+    .sidebar {
+      width: 80px;
+      height: 100%;
+      display: flex;
+    }
+
+    .items {
+      margin-top: 20px;
+    }
+
+    .items>img {
+      margin-bottom: 15px;
+    }
+
+    .wrapper2 {
+      padding: 0 25px;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .compose {
+      width: 200px;
+      text-align: center;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid;
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      font-size: 16px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .compose:hover {
+      background-image: linear-gradient(120deg, #f5576c 0%, #f093fb 100%);
+      transition: 0.5s ease-in-out;
+    }
+
+    .folders {
+      margin-top: 30px;
+      color: #b8b8b8;
+      font-size: 14px;
+    }
+
+    .folder-icons {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-name1 {
+      margin-left: 10px;
+      color: #8b47a9;
+    }
+
+    .icon-name {
+      margin-left: 10px;
+      color: grey;
+    }
+
+    .names {
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .section1 {
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    .buton-span {
+      border-radius: 25px;
+      padding: 5px 10px;
+      border: 1px;
+      color: white;
+      background-color: #fe365c;
+      box-shadow: 0px 0px 10px 2px #f7bfc9;
+      margin-left: 70px;
+    }
+
+    .red {
+      background-color: #fe4663;
+    }
+
+    .right-side {
+      background-color: transparent;
+      width: 100%;
+      padding: 8px 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-body {
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .buttons {
+      display: flex;
+    }
+
+    .mail-names {
+      color: grey;
+      font-weight: bold;
+      font-size: 15px;
+      margin-left: 10px;
+    }
+
+    .mails {
+      display: flex;
+      align-items: center;
+    }
+
+    .mails>img {
+      width: 35px;
+      border-radius: 10px;
+    }
+
+    .upper {
+      margin: 5px;
+      width: 1020px;
+      height: 150px;
+      background-color: white;
+      border-radius: 15px;
+      display: inline-block;
+    }
+
+    .first,
+    .second,
+    .third {
+      margin: 5px;
+      padding: 5px;
+      width: 250px;
+      height: 130px;
+      border-right: 2px solid rgb(216, 213, 213);
+    }
+
+    .forth {
+      margin: 5px;
+      padding: 5px;
+      width: 250px;
+      height: 130px;
+    }
+
+    .first h3 {
+      color: black;
+      font-family: sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .first h4 {
+      color: grey;
+      size: 30px;
+      text-align: start;
+      padding-left: 30px;
+    }
+
+    .first h5 {
+      margin-top: 20px;
+      color: green;
+      size: 20px;
+      padding-left: 30px;
+    }
+
+    .second h3 {
+      color: black;
+      font-family: sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .second h4 {
+      color: grey;
+      size: 30px;
+      text-align: start;
+      padding-left: 30px;
+    }
+
+    .second h5 {
+      margin-top: 20px;
+      color: red;
+      size: 20px;
+      padding-left: 30px;
+    }
+
+    .third h3 {
+      color: black;
+      font-family: sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .third h4 {
+      color: grey;
+      size: 30px;
+      text-align: start;
+      padding-left: 30px;
+    }
+
+    .third h5 {
+      margin-top: 20px;
+      color: green;
+      size: 20px;
+      padding-left: 30px;
+    }
+
+    .forth h3 {
+      color: black;
+      font-family: sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .forth h4 {
+      color: grey;
+      size: 30px;
+      text-align: start;
+      padding-left: 30px;
+    }
+
+    .forth h5 {
+      margin-top: 20px;
+      color: green;
+      size: 20px;
+      padding-left: 30px;
+    }
+
+    .lower {
+      margin: 10px;
+      padding: 5px;
+      width: 1010px;
+      height: 600px;
+      background-color: transparent;
+      display: inline-flex;
+    }
+
+    .section1 {
+      margin: 5px;
+      width: 700px;
+      height: 580px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section2 {
+      margin: 5px;
+      width: 290px;
+      height: 580px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .graph {
+      padding: 20px;
+      margin: 5px;
+      height: 300px;
+      width: 780px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .graph h2 {
+      font-weight: 900;
+      color: black;
+    }
+
+    .graph h4 {
+      color: grey;
+
+    }
+
+    .graph h5 {
+      font-size: 15px;
+      color: green;
+
+    }
+    .graph.chart {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(100, 1fr);
+      grid-column-gap: 5px;
+      height: 100vh;
+      width: 70vw;
+      padding: 5px 10px;
+    }
+    
+  
+    .popular {
+      margin: 5px;
+      height: 260px;
+      width: 780px;
+      background-color: white;
+      border-radius: 15px 15px 15px 15px;
+    }
+
+    .popular h4 {
+      text-align: left;
+      padding-left: 10px;
+      font-size: 15px;
+      font-weight: 900;
+      color: grey;
+    }
+
+    .popular p {
+      text-align: left;
+      color: orangered;
+      font-size: 15px;
+      font-weight: 300;
+      padding-left: 30px;
+    }
+
+    .chart {
+      margin: 5px;
+      height: 200px;
+      width: 280px;
+      background-color: white;
+      border-radius: 15px;
+    }
+
+    .chart h4 {
+      color: black;
+      font-family: sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: left;
+      padding-left: 5px;
+      padding-top: 20px;
+    }
+
+    .chart .bold1 {
+      padding-left: 20px;
+      float: left;
+      color: black;
+      font-size: 15px;
+    }
+
+    .chart .bold2 {
+      padding-bottom: 30px;
+      padding-right: 40px;
+      float: right;
+      color: black;
+      font-size: 15px;
+
+    }
+
+    .chart .para {
+      padding-left: 50px;
+      font-size: 11px;
+    }
+
+    .half-circle {
+      margin-left: 20px;
+      width: 200px;
+      height: 100px;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      border: 20px solid green;
+      border-bottom: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .webinars {
+      margin: 5px;
+      height: 370px;
+      width: 280px;
+      background-color: rgb(63, 197, 63);
+      border-radius: 15px;
+    }
+
+    .webinars h4 {
+      color: white;
+      font-family: sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding-left: 20px;
+      padding-top: 20px;
+    }
+
+    .webinars h5 {
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: left;
+      padding-left: 20px;
+      font-weight: 300;
+    }
+
+    .webinars p {
+      color: white;
+      font-size: 15px;
+      padding-left: 20px;
+    }
+
+    .webinars a {
+      text-decoration: none;
+      color: white;
+      font-weight: 900;
+      padding-left: 30px;
+    }
+    .bars{
+      height: 150px;
+      width:450px;
+      border-bottom: 2px solid black;
+      background-color:transparent;
+      display:flex;
+      flex-direction: row;
+
+    }
+    .bars .one{
+      margin-left:30px;
+      height: 50px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+    }
+    .bars .two{
+      margin-left:30px;
+      height: 150px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+    }
+    .bars .three{
+      margin-left:30px;
+      height: 150px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+    }
+    .bars .four{
+      margin-left:30px;
+      height: 150px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+    }
+    .bars .five{
+      margin-left:30px;
+      height: 150px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+    }
+    .bars .six{
+      margin-left:30px;
+      height: 150px;
+      width:30px;
+      background-color:green;
+      border-radius: 25px 25px 0px 0px;
+
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard">
+    <div class="left">
+      <div class="navigation">
+        <div class="wrapper2">
+          <div class="mails">
+            <img
+              src="https://media-exp1.licdn.com/dms/image/C5103AQHJK4GcmPGJ-A/profile-displayphoto-shrink_200_200/0?e=1598486400&v=beta&t=ZtWomuxgHj960O_o7xebnQGyhPG6hrVtKc3sz8zaJgc" />
+            <div class="mail-names">
+              <b>Prince Rajput &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </b>(Web Developer)
+            </div>
+
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/qdgf3TJ/envelope.png" />
+            </div>
+            <div class="icon-name1">Inbox
+            </div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/qdgf3TJ/envelope.png" />
+            </div>
+            <div class="icon-name1">Alerts
+              <button class="buton-span"> 13
+              </button></div>
+          </div>
+          <button class="compose">Overview
+          </button>
+          <div class="folders">Podcasts</div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/2yLfX9W/sent-mail.png" />
+            </div>
+            <div class="icon-name">Episodes</div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/6ZH9kK3/star.png" />
+            </div>
+            <div class="icon-name">Media's</div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/z4QhcbD/email.png" />
+            </div>
+            <div class="icon-name">Materials</div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+            <div class="icon-name">Contacts</div>
+          </div>
+          <div class="folders">
+            Analytics
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+            <div class="icon-name">Sub's
+              <button class="buton-span"> 13
+              </button>
+            </div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+            <div class="icon-name">Channels</div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+            <div class="icon-name">Integrations</div>
+          </div>
+          <div class="folder-icons">
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+            <div class="icon-name"><b>Pod Casters</b> </div>
+            <div class="icon1">
+              <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="right-body">
+        <div class="upper">
+          <div class="row">
+            <div class="first">
+              <h4>New Subscribers</h4>
+              <h3>5,097</h3>
+              <h5>+33.45%</h5>
+            </div>
+            <div class="second">
+              <h4>Streams</h4>
+              <h3>47,403</h3>
+              <h5>-112.45%</h5>
+            </div>
+            <div class="third">
+              <h4>Engagement rate</h4>
+              <h3>25.81</h3>
+              <h5>+62.52%</h5>
+            </div>
+            <div class="forth">
+              <h4>Avg. watch time</h4>
+              <h3>45,4 min</h3>
+              <h5>+4.46%</h5>
+            </div>
+          </div>
+        </div>
+        <div class="lower">
+          <section class="right-body section1">
+            <div class="graph">
+              <h4>Audience</h4>
+              <h2>301,097</h2>
+              <h5>+58.31 % &nbsp;&nbsp; for 7 last days</h5>
+              <div class="bars">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+                <div class="four"></div>
+                <div class="five"></div>
+                <div class="six"></div>
+                <div class="seven"></div>
+                <div class="eight"></div>
+                <div class="nine"></div>
+                <div class="ten"></div>
+                <div class="eleven"></div>
+                <div class="twelve"></div>
+                <div class="thirteen"></div>
+                <div class="fourteen"></div>
+              </div>
+            </div>
+            <div class="popular">
+              <h4>Popular episodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#">See all</a></h4>
+              <h4>1&nbsp;&nbsp;&nbsp;&nbsp;<b>Kuji Podcast 33: Live</b></h4>
+              <p>Guest: Praveen Kumar</p>
+              <h4>2&nbsp;&nbsp;&nbsp;&nbsp;<b>Kuji Podcast 34: Live</b></h4>
+              <p>Guest: Prince Kumar</p>
+
+            </div>
+          </section>
+          <section class="right-body section2">
+            <div class="chart">
+              <h4>Audiance stisfection
+                <img src="https://ya-webdesign.com/transparent450_/dot-transparent-three-4.png" height="30px"
+                  width="30px" /></h4>
+              <div class="half-circle">
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;😀<br>
+                <h3> &nbsp;&nbsp;&nbsp;&nbsp; 76.7%</h3>
+              </div>
+              <h6><b class="bold1">0%</b>
+                <p class="para"> based on likes and dislikes</p> <b class="bold2">100%</b>
+              </h6>
+            </div>
+            <div class="webinars">
+              <h4>Webinars &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="https://ya-webdesign.com/transparent450_/dot-transparent-three-4.png" height="30px"
+                  width="30px" /></h4>
+              <h5>Learn how you can earn more then 20% each month.</h5>
+              <p>Join our webinar and learn how to increase more then 20% your monthly income.</p>
+              <a href="#">Learn more</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+
+</html>
